@@ -37,8 +37,8 @@ int trace_exec(struct sys_enter_ctx *ctx)
 	struct exec_event *e = bpf_ringbuf_reserve(&exec_events, sizeof(*e), 0);
 	if (!e) return 0;
 
-	e->pid = (u32)(bpf_get_current_pid_tgid() >> 32);
-	e->uid = (u32)(bpf_get_current_uid_gid() & 0xffffffff);
+	e->pid = (__u32)(bpf_get_current_pid_tgid() >> 32);
+	e->uid = (__u32)(bpf_get_current_uid_gid() & 0xffffffff);
 	bpf_get_current_comm(&e->comm, sizeof(e->comm));
 
 	// filename is the first syscall argument (userspace pointer)

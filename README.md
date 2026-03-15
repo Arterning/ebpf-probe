@@ -1,4 +1,4 @@
-# asec-agent
+# ebpf-probe
 
 轻量级 eBPF 安全探针，部署在 Linux 服务器上，实时采集网络流量、进程执行事件及异常行为，并上报至 ASEC 资产安全管理平台。
 
