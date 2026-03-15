@@ -1,0 +1,13 @@
+backend:
+  # URL of your asec-backend API (no trailing slash)
+  url: "http://your-backend:8000/api"
+  # API key — must match the value stored in sys_config key "agent_api_key"
+  api_key: "change-me-secret-key"
+
+agent:
+  # How often (seconds) to batch-send buffered events. Default: 5
+  flush_interval: 5
+  # Override the auto-detected outbound IP. Leave empty for auto-detect.
+  host_ip: ""
+  # Friendly hostname label. Defaults to os.Hostname().
+  hostname: ""

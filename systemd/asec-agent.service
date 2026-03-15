@@ -1,0 +1,23 @@
+[Unit]
+Description=ASEC eBPF Security Agent
+Documentation=https://github.com/your-org/asec
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/asec-agent /etc/asec-agent.yaml
+Restart=on-failure
+RestartSec=5s
+# Limit log noise
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=asec-agent
+
+# Allow loading eBPF programs
+AmbientCapabilities=CAP_BPF CAP_NET_ADMIN CAP_SYS_ADMIN CAP_PERFMON
+CapabilityBoundingSet=CAP_BPF CAP_NET_ADMIN CAP_SYS_ADMIN CAP_PERFMON
+
+[Install]
+WantedBy=multi-user.target
